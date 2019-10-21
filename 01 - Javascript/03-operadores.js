@@ -3,10 +3,11 @@ for (const i in arreglo) { // Indices
     console.log('I:', i);
     // arreglo[i] = arreglo[i] + 5 ;
 }
-for (const i of arreglo) { // Valores
-    console.log('i:', i);
+for (const i of arreglo) { // Valores∆
+    for (const i of arreglo) { // Valores∆D∆
+        console.log('i:', i);
+    }
 }
-
 const respuestaForEach = arreglo
     .forEach(
         function (valorActual, indiceActual) {
@@ -62,7 +63,29 @@ console.log('respuestaEvery', respuestaEvery);
 // map -> arreglo -> some
 const respuestaMenoresADiez =
     arreglo.map((x) => (x / 2) + 7)
-           .filter((y) => y < 10);
+        .filter((y) => y < 10);
+
+
+const respuestaFind =
+    arreglo.find( //
+        (valorActual, indice, arreglo) => {
+            return valorActual === 8;
+        }
+    );
+const respuestaFindIndex =
+    arreglo.findIndex(
+        (valorActual) => {
+            return valorActual === 8;
+        }
+    );
+
+const respuestaReduce =
+    arreglo
+        .reduce(
+            (valorInicial, valorActual, indice, array) => {
+                return valorInicial + valorActual;
+            }, 0 // VALOR INICIAL
+        );
 
 
 //  for
