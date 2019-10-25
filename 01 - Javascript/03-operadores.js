@@ -10,7 +10,7 @@ for (const i of arreglo) { // Valores∆
 }
 const respuestaForEach = arreglo
     .forEach(
-        function (valorActual, indiceActual) {
+        function (valorActual, indiceActual, arreglo) {
             valorActual = valorActual + 5;
             console.log('valorActual', valorActual);
             console.log('indiceActual', indiceActual);
