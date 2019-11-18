@@ -98,7 +98,7 @@ async function leerArchivoSync() {
         return 0
     }
 }
-leerArchivoSync
+leerArchivoSync()
     .then(
         (numero)=>{
             console.log(numero); // 1
