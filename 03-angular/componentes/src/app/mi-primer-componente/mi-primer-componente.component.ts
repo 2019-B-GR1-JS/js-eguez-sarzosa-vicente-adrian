@@ -9,19 +9,21 @@ export class MiPrimerComponenteComponent
   implements OnInit, OnDestroy {
 
   @Input()
-  public titulo:string;
+  public titulo: string;
 
   @Input()
-  public imagen:string;
+  public imagen: string;
 
   @Input()
-  public textoImagen:string;
+  public textoImagen: string;
 
   @Input()  // Atributo Propiedad
-  public textoBoton:string;
+  public textoBoton: string;
 
   @Output() // EVENTO
   public cambioSueldo = new EventEmitter();
+
+  tamanoImagen = 200;
 
   constructor() {
     console.log('Instanciando');
@@ -32,20 +34,29 @@ export class MiPrimerComponenteComponent
     console.log(this.titulo);
     console.log(this.textoImagen);
     console.log(this.textoBoton);
+    console.log(this.tamanoImagen);
   }
 
   ngOnDestroy(): void { // La clase esta destruida
   }
 
-  saludar(){
-    alert("HOLAAAAAAAAAAAAAAA");
+  saludar() {
+    alert('HOLAAAAAAAAAAAAAAA');
   }
 
-  aumentarSueldo(){
+  aumentarSueldo() {
+
     // this.textoBoton = this.textoBoton + 1;
     this.textoBoton = (Number(this.textoBoton) + 1).toString();
+    this.tamanoImagen = this.tamanoImagen + 10;
     this.cambioSueldo.emit(this.textoBoton);
     // this.textoBoton = (+this.textoBoton + 1).toString();
+  }
+
+  miFuncion(evento: KeyboardEvent) {
+    console.log(evento);
+    const elemento = evento.srcElement as any;
+    elemento.value;
   }
 
 
