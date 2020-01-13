@@ -7,6 +7,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {UsuarioRestService} from "./services/rest/usuario-rest.service";
 import {ButtonModule} from 'primeng/button';
+import {InputTextModule, TableModule} from "primeng";
 @NgModule({
   declarations: [
     AppComponent
@@ -18,6 +19,8 @@ import {ButtonModule} from 'primeng/button';
     FormsModule, // -> Formularios
     HttpClientModule, // -> HTTP
     ButtonModule,
+    TableModule,
+    InputTextModule,
   ],
   providers: [
     UsuarioRestService

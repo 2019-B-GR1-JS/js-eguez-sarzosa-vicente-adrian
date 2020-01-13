@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {FILAS} from './constantes/numero-filas-por-tabla';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,10 @@ export class AppComponent implements OnInit {
   title = 'angular-rest';
   url = 'http://localhost:1337';
   usuarios = [];
+  FILAS = FILAS;
+  nombreFiltrado = '';
+
+
   // INYECCION DE DEPENDENCIAS
   // DEPENDENCIAS -> Servicios!
   constructor(
@@ -44,12 +49,21 @@ export class AppComponent implements OnInit {
       );
   }
 
-  editar(usuario){
+  editar(usuario) {
     console.log('Editando usuario', usuario);
   }
 
-  eliminar(usuario){
+  eliminar(usuario) {
     console.log('Eliminando usuario', usuario);
+  }
+
+  usuariosFiltrados() {
+    return this.usuarios
+      .filter(
+        (usuario) => {
+          return usuario.nombre.includes(this.nombreFiltrado);
+        }
+      );
   }
 
 

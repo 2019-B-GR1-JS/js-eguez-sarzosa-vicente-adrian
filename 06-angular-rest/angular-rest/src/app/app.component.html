@@ -1,6 +1,3 @@
-
-
-
 <table>
   <tr> <!-- table row -->
     <th>Nombre</th> <!-- table header -->
@@ -15,7 +12,6 @@
     <td>1234</td> <!-- table detail -->
   </tr>
 </table>
-
 
 
 <table>
@@ -40,7 +36,57 @@
   </tr>
 </table>
 
+<p-table [value]="usuariosFiltrados()"
+         [paginator]="true"
+         [rows]="FILAS">
+  <ng-template pTemplate="caption">
+    Lista de Usuarios
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Correo</th>
+      <th>Password</th>
+      <th>Acciones</th>
+    </tr>
+    <tr>
+      <th>
+        <input type="text"
+               pInputText
+               name="nombre"
+               [(ngModel)]="nombreFiltrado"
+        />
+      </th>
+      <th>
+        <input type="text" pInputText name="apellido"/>
+      </th>
+      <th>
+        <input type="text" pInputText name="correo"/>
+      </th>
+      <th>
+        <input type="text" pInputText name="password"/>
+      </th>
+      <th>
 
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-usuario>
+    <tr>
+      <td>{{usuario.nombre}}</td>
+      <td>{{usuario.apellido}}</td>
+      <td>{{usuario.correo}}</td>
+      <td>{{usuario.password}}</td>
+      <td>
+        <p-button label="EDITAR" (click)="editar(usuario)">
+        </p-button>
+        <p-button label="ELIMINAR" (click)="eliminar(usuario)">
+        </p-button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
 
 
 <router-outlet></router-outlet>
