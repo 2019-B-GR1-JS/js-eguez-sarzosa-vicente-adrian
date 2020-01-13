@@ -13,6 +13,9 @@ export class AppComponent implements OnInit {
   usuarios = [];
   FILAS = FILAS;
   nombreFiltrado = '';
+  apellidoFiltrado = '';
+  correoFiltrado = '';
+  passwordFiltrado = '';
 
 
   // INYECCION DE DEPENDENCIAS
@@ -61,7 +64,22 @@ export class AppComponent implements OnInit {
     return this.usuarios
       .filter(
         (usuario) => {
-          return usuario.nombre.includes(this.nombreFiltrado);
+          return usuario.nombre.toLowerCase().includes(this.nombreFiltrado.toLowerCase());
+        }
+      )
+      .filter(
+        (usuario) => {
+          return usuario.apellido.toLowerCase().includes(this.apellidoFiltrado.toLowerCase());
+        }
+      )
+      .filter(
+        (usuario) => {
+          return usuario.correo.toLowerCase().includes(this.correoFiltrado.toLowerCase());
+        }
+      )
+      .filter(
+        (usuario) => {
+          return usuario.password.toLowerCase().includes(this.passwordFiltrado.toLowerCase());
         }
       );
   }

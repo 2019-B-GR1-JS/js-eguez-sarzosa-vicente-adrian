@@ -8,6 +8,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {UsuarioRestService} from "./services/rest/usuario-rest.service";
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule, TableModule} from "primeng";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from "@angular/material/input";
 @NgModule({
   declarations: [
     AppComponent
@@ -21,6 +23,8 @@ import {InputTextModule, TableModule} from "primeng";
     ButtonModule,
     TableModule,
     InputTextModule,
+    BrowserAnimationsModule,
+    MatInputModule
   ],
   providers: [
     UsuarioRestService

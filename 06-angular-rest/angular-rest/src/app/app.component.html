@@ -59,13 +59,24 @@
         />
       </th>
       <th>
-        <input type="text" pInputText name="apellido"/>
+        <input type="text"
+               pInputText
+               name="apellido"
+               [(ngModel)]="apellidoFiltrado"/>
       </th>
       <th>
-        <input type="text" pInputText name="correo"/>
+        <input type="text"
+               pInputText
+               name="correo"
+               [(ngModel)]="correoFiltrado"
+        />
       </th>
       <th>
-        <input type="text" pInputText name="password"/>
+        <input type="text"
+               pInputText
+               name="password"
+               [(ngModel)]="passwordFiltrado"
+        />
       </th>
       <th>
 
@@ -88,5 +99,11 @@
   </ng-template>
 </p-table>
 
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email">
+    <mat-hint>Errors appear instantly!</mat-hint>
+  </mat-form-field>
+</form>
 
 <router-outlet></router-outlet>
