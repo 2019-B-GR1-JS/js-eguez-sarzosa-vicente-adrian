@@ -4,6 +4,7 @@ import {FILAS} from './constantes/numero-filas-por-tabla';
 
 import {ModalEditarUsuarioComponent} from "./modales/modal-editar-usuario/modal-editar-usuario.component";
 import {MatDialog} from "@angular/material/dialog";
+import {UsuarioRestService} from "./services/rest/usuario-rest.service";
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,8 @@ export class AppComponent implements OnInit {
   // DEPENDENCIAS -> Servicios!
   constructor(
     private readonly _httpClient: HttpClient,
-    private readonly _matDialog: MatDialog
+    private readonly _matDialog: MatDialog,
+    private readonly _usuarioRestService: UsuarioRestService
   ) {
     // CASI NUNCA HACER CONFIGURACIONES
   }
@@ -61,7 +63,7 @@ export class AppComponent implements OnInit {
     const matDialogRefModalEditarUsuario = this._matDialog
       .open(
         ModalEditarUsuarioComponent,
-        { width: '500px', data: { usuario } }
+        {width: '500px', data: {usuario}}
       );
     const respuestaDialogo$ = matDialogRefModalEditarUsuario
       .afterClosed();
@@ -70,15 +72,41 @@ export class AppComponent implements OnInit {
       .subscribe(
         (datos) => { // try
           console.log('Datos', datos);
-          if(datos){
-          }else{
-
+          if (datos) {
+            this.editarUsuarioHTTP(usuario.id, datos);
+          } else {
+            // undefined
           }
         },
         (error) => { // catch
           console.log('Error', error);
         }
       );
+  }
+
+  editarUsuarioHTTP(id: number, datos) {
+    const usuarioEditado$ = this._usuarioRestService
+      .editar(id, datos);
+    usuarioEditado$
+      .subscribe(
+        (usuarioEditado: any) => { // try
+          console.log(usuarioEditado);
+          const indice = this.usuarios
+            .findIndex(
+              (usuario) => {
+                return usuario.id === id;
+              }
+            );
+          this.usuarios[indice].nombre = datos.nombre;
+          this.usuarios[indice].apellido = datos.apellido;
+          this.usuarios[indice].correo = datos.correo;
+          this.usuarios[indice].password = datos.password;
+
+        },
+        (error) => { // catch
+          console.error(error)
+        }
+      )
   }
 
   eliminar(usuario) {
