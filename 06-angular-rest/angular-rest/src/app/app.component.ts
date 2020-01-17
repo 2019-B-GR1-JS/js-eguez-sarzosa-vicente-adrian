@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FILAS} from './constantes/numero-filas-por-tabla';
 
+import {ModalEditarUsuarioComponent} from "./modales/modal-editar-usuario/modal-editar-usuario.component";
+import {MatDialog} from "@angular/material/dialog";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,7 +24,8 @@ export class AppComponent implements OnInit {
   // INYECCION DE DEPENDENCIAS
   // DEPENDENCIAS -> Servicios!
   constructor(
-    private readonly _httpClient: HttpClient
+    private readonly _httpClient: HttpClient,
+    private readonly _matDialog: MatDialog
   ) {
     // CASI NUNCA HACER CONFIGURACIONES
   }
@@ -54,10 +58,28 @@ export class AppComponent implements OnInit {
 
   editar(usuario) {
     console.log('Editando usuario', usuario);
+    const matDialogRefModalEditarUsuario = this._matDialog
+      .open(
+        ModalEditarUsuarioComponent,
+        { width: '500px', data: { usuario } }
+      );
+    const respuestaDialogo$ = matDialogRefModalEditarUsuario
+      .afterClosed();
+
+    respuestaDialogo$
+      .subscribe(
+        (datos) => { // try
+          console.log('Datos', datos);
+        },
+        (error) => { // catch
+          console.log('Error', error);
+        }
+      );
   }
 
   eliminar(usuario) {
     console.log('Eliminando usuario', usuario);
+
   }
 
   usuariosFiltrados() {
