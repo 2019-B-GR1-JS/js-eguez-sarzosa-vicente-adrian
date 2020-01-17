@@ -70,6 +70,10 @@ export class AppComponent implements OnInit {
       .subscribe(
         (datos) => { // try
           console.log('Datos', datos);
+          if(datos){
+          }else{
+
+          }
         },
         (error) => { // catch
           console.log('Error', error);
