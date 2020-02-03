@@ -8,7 +8,7 @@
 module.exports = {
   attributes: {
     valor: {
-      type: number,
+      type: 'number',
     }
   },
 };
