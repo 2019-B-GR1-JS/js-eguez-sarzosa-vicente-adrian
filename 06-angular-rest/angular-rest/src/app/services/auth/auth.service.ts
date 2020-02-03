@@ -7,6 +7,7 @@ import {environment} from "../../../environments/environment";
 })
 export class AuthService {
   estaLogeado = false;
+  sesion;
 
   constructor(private readonly _httpClient:HttpClient){
 

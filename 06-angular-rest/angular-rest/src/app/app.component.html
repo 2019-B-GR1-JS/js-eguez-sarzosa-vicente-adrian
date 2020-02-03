@@ -1,4 +1,11 @@
 
+
+<div *ngIf="_authService.estaLogeado">
+  <p>{{_authService.sesion.nombre}} {{_authService.sesion.apellido}} </p>
+  <p>{{_authService.sesion.correo}}</p>
+</div>
+
+
 <ul> <!-- Unordered List -->
   <li>
     <a [routerLink]="['/inicio']"> <!-- Ancho/Ancla -->

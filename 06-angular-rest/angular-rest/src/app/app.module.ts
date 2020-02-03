@@ -21,6 +21,7 @@ import { RutaEditarLibroComponent } from './rutas/ruta-editar-libro/ruta-editar-
 import { RutaBuscarLibroComponent } from './rutas/ruta-buscar-libro/ruta-buscar-libro.component';
 import {LibroRestService} from "./services/rest/libro-rest.service";
 import {AuthService} from "./services/auth/auth.service";
+import {EstaLogeadoPolicy} from "./services/auth/politicas/esta-logeado.policy";
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +54,7 @@ import {AuthService} from "./services/auth/auth.service";
     UsuarioRestService,
     LibroRestService,
     AuthService,
+    EstaLogeadoPolicy
   ], // Servicios
   bootstrap: [AppComponent]
 })
